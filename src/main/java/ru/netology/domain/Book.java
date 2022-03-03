@@ -4,19 +4,18 @@ import java.util.Objects;
 
 public class Book extends Product {
     private String author;
-    private int pages;
-    private int publishedYear;
+    private String nameOfBook;
 
     public Book() {
         super();
     }
 
-    public Book(int id, String name, int price, String author, int pages, int publishedYear) {
+    public Book(int id, String name, int price, String author, String nameOfBook) {
         super(id, name, price);
         this.author = author;
-        this.pages = pages;
-        this.publishedYear = publishedYear;
+        this.nameOfBook = nameOfBook;
     }
+
 
     public String getAuthor() {
         return author;
@@ -26,20 +25,13 @@ public class Book extends Product {
         this.author = author;
     }
 
-    public int getPages() {
-        return pages;
+    public String getNameOfBook() {
+        return nameOfBook;
     }
 
-    public void setPages(int pages) {
-        this.pages = pages;
-    }
-
-    public int getPublishedYear() {
-        return publishedYear;
-    }
-
-    public void setPublishedYear(int publishedYear) {
-        this.publishedYear = publishedYear;
+    public String setNameOfBook(String nameOfBook) {
+        this.nameOfBook = nameOfBook;
+        return nameOfBook;
     }
 
     @Override
@@ -48,22 +40,22 @@ public class Book extends Product {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Book book = (Book) o;
-        return pages == book.pages &&
-                publishedYear == book.publishedYear &&
-                Objects.equals(author, book.author);
+        return Objects.equals(author, book.author) &&
+               Objects.equals(nameOfBook, book.nameOfBook);
+
+
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), author, pages, publishedYear);
+        return Objects.hash(super.hashCode(), author, nameOfBook);
     }
 
     @Override
     public String toString() {
         return "Book{" +
                 "author='" + author + '\'' +
-                ", pages=" + pages +
-                ", publishedYear=" + publishedYear +
+                ", nameOfBook=" + nameOfBook +
                 '}';
     }
 }
